@@ -31,4 +31,31 @@ public class ProdService {
         products.add(newProd);
     }
 
+    public boolean updateProd(Product newProd) {
+        int updatableId = findIndex(newProd.getProdId());
+        if (updatableId == -1) {
+            return false;
+        }
+        products.set(updatableId, newProd);
+        return true;
+    }
+    
+    public int findIndex(int prodId) {
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getProdId() == prodId) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public boolean deleteProd(int prodIdToBeDeleted) {
+        int indexToBeDeleted = findIndex(prodIdToBeDeleted);
+        if (indexToBeDeleted == -1) {
+            return false;
+        }
+        products.remove(indexToBeDeleted);
+        return true;
+    }
+
 }
