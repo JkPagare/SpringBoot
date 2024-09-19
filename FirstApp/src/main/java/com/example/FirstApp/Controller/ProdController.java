@@ -38,17 +38,13 @@ public class ProdController {
     }
 
     @PutMapping("/updateprod")
-    public String updateProd(@RequestBody Product newProd){
-        boolean updateResult = myProduct.updateProd(newProd);
-        if (updateResult) return newProd.getProdId()+"updated sucessfully";
-        else return "Product not found :(";
+    public void updateProd(@RequestBody Product newProd){
+        myProduct.updateProd(newProd);
     }
 
     @DeleteMapping("/deleteprod/{prodIdToBeDeleted}")
-    public String deleteProd (@PathVariable int prodIdToBeDeleted){
-        boolean deleteResult = myProduct.deleteProd(prodIdToBeDeleted);
-        if (deleteResult) return prodIdToBeDeleted+" updated sucessfully";
-        else return "Product not found , Not deleted :(";
+    public void deleteProd (@PathVariable int prodIdToBeDeleted){
+       myProduct.deleteProd(prodIdToBeDeleted);
     } 
 
 }
