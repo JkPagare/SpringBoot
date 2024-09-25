@@ -2,6 +2,7 @@ package com.example.FirstApp.Model;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +15,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int prodId;
+    @Column(unique = true)
     private String prodName;
     private int prodPrice;
 

@@ -1,10 +1,10 @@
 package com.example.FirstApp.Services;
 
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.example.FirstApp.Model.Product;
@@ -21,15 +21,23 @@ public class ProdService {
     //     new Product(102, "iPhone 15", 60000)));
 
     public List<Product> getProds(){
-        return repo.findAll();
+        // return new HashSet<>(repo.findAll());
+        return repo.findAllDistinctProds();
     }
 
     public Product getProductById( int prodId){
         return repo.findById(prodId).orElse(new Product(prodId, null, 0));
     }
 
-    public void addProd(Product newProd) {
+    public String addProd(Product newProd) {
+        try {
         repo.save(newProd);
+        return "Product added successfully.";
+    } catch (DataIntegrityViolationException e) {
+        return "Product with name '" + newProd.getProdName() + "' already exists.";
+    } catch (Exception e) {
+        return "An error occurred while adding the product.";
+    }
     }
 
     public void updateProd(Product newProd) {
