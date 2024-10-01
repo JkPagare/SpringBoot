@@ -1,6 +1,7 @@
 Spring Notes 
 =============
-@Autowired // Feild Injection
+    '''
+    @Autowired // Feild Injection
     @Qualifier("another")
     private MyInterface diff;
 
@@ -14,7 +15,7 @@ Spring Notes
     public void setter(Diiferent diff){
     this.diff=diff;
     }
-
+    '''
 
     @RestController
     public class About {
