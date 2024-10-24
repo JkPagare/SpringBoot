@@ -1,0 +1,16 @@
+version: '3'
+services:
+
+  spring-boot-app:
+    build: 
+      context: ./FirstApp-backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+  react-app:
+    build: 
+      context: ./FirstApp-frontend/first-app
+      dockerfile: FirstApp-frontend/first-app/Dockerfile
+    ports:
+      - "3000:3000"
