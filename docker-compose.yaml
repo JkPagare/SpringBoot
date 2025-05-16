@@ -11,6 +11,6 @@ services:
   react-app:
     build: 
       context: ./FirstApp-frontend/first-app
-      dockerfile: FirstApp-frontend/first-app/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
